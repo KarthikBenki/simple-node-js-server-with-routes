@@ -4,15 +4,19 @@ const http = require('http')
 //usique address of server
 const port = 8000;
 
-function requestHandler(req,res){
+const server = http.createServer((req,res)=>{
+    //request handler function
     console.log(req.url);
 
-    res.end(JSON.stringify({
-        message: 'Hello World'
-    }))
-}
-
-const server = http.createServer(requestHandler)
+    if (req.url==="/login") {
+         res.end('<h1>Hello World</h1>')
+         return
+    }
+ 
+     res.end(JSON.stringify({
+         message: '404 Page Not Found'
+     }))
+})
 
 server.listen(port,(err)=>{
     if(err){
