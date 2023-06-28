@@ -21,6 +21,19 @@ const server = http.createServer((req,res)=>{
          
          return
     }
+
+    if (req.url==="/home" || req.url==="/") {
+        res.writeHead(200,{'content-type':"text/html"})
+        fs.readFile('./home.html',(err,data)=>{
+            if (err) {
+                console.log(err);
+                res.end('<h1>Error!</h1>')
+            }
+            res.end(data)
+        })
+         
+         return
+    }
  
    fs.readFile('./_404.html',(err,data)=>{
     if (!err && req.method=="GET"){
