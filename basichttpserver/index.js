@@ -1,4 +1,5 @@
 const http = require('http')
+const fs = require('fs')
 
 
 //usique address of server
@@ -10,7 +11,14 @@ const server = http.createServer((req,res)=>{
 
     if (req.url==="/login") {
         res.writeHead(200,{'content-type':"text/html"})
-         res.end('<h1>Hello World</h1>')
+        fs.readFile('./login.html',(err,data)=>{
+            if (err) {
+                console.log(err);
+                res.end('<h1>Error!</h1>')
+            }
+            res.end(data)
+        })
+         
          return
     }
  
