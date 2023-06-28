@@ -6,6 +6,10 @@ const port = 8000;
 
 function requestHandler(req,res){
     console.log(req.url);
+
+    res.end(JSON.stringify({
+        message: 'Hello World'
+    }))
 }
 
 const server = http.createServer(requestHandler)
