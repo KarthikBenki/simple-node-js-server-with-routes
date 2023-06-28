@@ -34,6 +34,8 @@ const server = http.createServer((req,res)=>{
          
          return
     }
+
+    res.writeHead(404,{'content-type':"text/html"})
  
    fs.readFile('./_404.html',(err,data)=>{
     if (!err && req.method=="GET"){
