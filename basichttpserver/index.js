@@ -22,9 +22,13 @@ const server = http.createServer((req,res)=>{
          return
     }
  
-     res.end(JSON.stringify({
-         message: '404 Page Not Found'
-     }))
+   fs.readFile('./_404.html',(err,data)=>{
+    if (!err && req.method=="GET"){
+            res.end(data)
+            return
+    }
+    res.end('<h1>Error! Server busy with some other task</h1>')
+   })
 })
 
 server.listen(port,(err)=>{
