@@ -4,7 +4,11 @@ const http = require('http')
 //usique address of server
 const port = 8000;
 
-const server = http.createServer()
+function requestHandler(req,res){
+    console.log(req.url);
+}
+
+const server = http.createServer(requestHandler)
 
 server.listen(port,(err)=>{
     if(err){
